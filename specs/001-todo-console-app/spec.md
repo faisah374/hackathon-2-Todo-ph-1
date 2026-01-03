@@ -77,10 +77,8 @@
 
 ## Requirements *(mandatory)*
 
-- **Simplicity Check**: Requirement adds minimum necessary complexity (Phase-1: no manual coding, standard library only)
-- **Deterministic Check**: Outcome is strictly defined for given inputs (same input → same output)
-- **Phase-1 Scope Check**: Requirement must NOT involve persistence, web, networking, AI, or authentication
-- **In-Memory Check**: All data must be stored in-memory only (no files, databases, cloud storage)
+- **Simplicity Check**: Requirement adds minimum necessary complexity.
+- **Deterministic Check**: Outcome is strictly defined for given inputs.
 
 <!--
   ACTION REQUIRED: The content in this section represents placeholders.
