@@ -17,21 +17,26 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: Python 3.13+ (Phase-1 requirement)
+**Primary Dependencies**: Standard library only (no external dependencies except pytest for testing)
+**Storage**: In-memory only (list/dict) - NO persistence permitted in Phase-1
+**Testing**: pytest (if testing specified in requirements)
+**Target Platform**: Console/Terminal (stdin/stdout)
+**Project Type**: Single console application (CLI)
+**Performance Goals**: Deterministic behavior (same input → same output)
+**Constraints**: No persistence, no web, no networking, no AI, no authentication
+**Scale/Scope**: Single-user, single-process, runtime-only state
 
 ## Constitution Check
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+- [ ] **Simplicity Over Cleverness**: Does the design use minimal, readable Python with no manual coding?
+- [ ] **Determinism**: Are all logic paths predictable and testable (same input → same output)?
+- [ ] **In-Memory State Integrity**: Is state management in-memory only with no persistence?
+- [ ] **Spec-Driven Development**: Does this follow Constitution → Spec → Plan → Tasks → Implementation sequence?
+- [ ] **Phase-1 Scope**: Are all features within Phase-1 boundaries (no web, DB, AI, auth, networking)?
+- [ ] **Standard Library Only**: Are external dependencies avoided (except pytest if testing specified)?
 
 ## Project Structure
 
@@ -56,43 +61,20 @@ specs/[###-feature]/
 -->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
+# Phase-1: Single Console Application (ONLY valid structure for Phase-1)
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+├── main.py              # Entry point - menu and main loop
+├── todo_operations.py   # Business logic (add, view, update, delete, mark complete)
+└── display.py           # Output formatting (optional, may be combined with main.py)
 
-tests/
-├── contract/
-├── integration/
-└── unit/
+tests/                   # Only if testing specified in requirements
+├── test_todo_operations.py
+└── test_integration.py  # Optional integration tests
 
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+# Phase-2+ structures (web, mobile, API) are NOT permitted in Phase-1
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: Phase-1 uses a simple, flat structure with a single entry point (main.py) and clear separation of concerns. No subdirectories unless complexity justifies them. Web application and mobile structures are explicitly prohibited in Phase-1.
 
 ## Complexity Tracking
 

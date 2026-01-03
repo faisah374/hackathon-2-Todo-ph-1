@@ -46,11 +46,11 @@ description: "Task list template for feature implementation"
 
 ## Phase 1: Setup (Shared Infrastructure)
 
-**Purpose**: Project initialization and basic structure
+**Purpose**: Project initialization and basic structure. Must verify Phase-1 compliance (Python 3.13+, standard library only, type hints, in-memory only).
 
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize [language] project with [framework] dependencies
-- [ ] T003 [P] Configure linting and formatting tools
+- [ ] T001 Create project structure per implementation plan (src/, tests/ if testing specified)
+- [ ] T002 Initialize Python project with main.py entry point (Python 3.13+, no external dependencies except pytest)
+- [ ] T003 [P] Configure linting and formatting tools (optional, Python standard tools only)
 
 ---
 
@@ -60,14 +60,16 @@ description: "Task list template for feature implementation"
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete
 
-Examples of foundational tasks (adjust based on your project):
+Examples of foundational tasks for Phase-1 (adjust based on your project):
 
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
+- [ ] T004 Create in-memory data structure for storing todos (list/dict, no persistence)
+- [ ] T005 [P] Implement task ID auto-increment logic
+- [ ] T006 [P] Setup console menu system and main loop
+- [ ] T007 Implement input validation and error handling framework
+- [ ] T008 Create display formatting functions for task listing
+- [ ] T009 Setup console I/O helper functions (prompts, messages)
+
+**Phase-1 Constraints**: NO database, NO files, NO API routing, NO authentication. All state in-memory only.
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
