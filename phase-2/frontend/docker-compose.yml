@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - BACKEND_URL=http://localhost:8000
+      - NEXT_PUBLIC_BACKEND_URL=http://localhost:8000
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
+
+volumes:
+  node_modules:
